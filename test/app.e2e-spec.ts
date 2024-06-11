@@ -15,6 +15,10 @@ describe('AppController (e2e)', () => {
     await app.init();
   });
 
+  it('NODE_ENV should return test', () => {
+    return expect(process.env.NODE_ENV).toBe('test');
+  });
+
   it('/ (GET)', () => {
     return request(app.getHttpServer())
       .get('/')

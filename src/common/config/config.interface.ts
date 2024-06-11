@@ -1,5 +1,6 @@
+export interface NestConfig {
+  port: number;
+}
 export interface Config {
-  nest: {
-    port: number;
-  };
+  nest: NestConfig;
 }
