@@ -8,8 +8,7 @@ services:
       - '${PORT}:3000'
     depends_on:
       - postgres
-    env_file:
-      - .env
+    env_file: .env.production
 
   postgres:
     image: postgres:16
@@ -17,8 +16,7 @@ services:
     restart: always
     ports:
       - '${POSTGRES_PORT}:5432'
-    env_file:
-      - .env
+    env_file: .env.production
     environment:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}

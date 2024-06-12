@@ -10,8 +10,7 @@ import { PrismaModule } from './modules/core/prisma/prisma.module';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [config],
-      // Different env file for testing
-      envFilePath: process.env.NODE_ENV === 'test' ? '.env.test' : '.env',
+      envFilePath: `.env.${process.env.NODE_ENV}`,
     }),
     // Prisma Global Module
     PrismaModule.forRoot({

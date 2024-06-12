@@ -7,11 +7,15 @@ WORKDIR /app
 COPY package*.json ./
 COPY prisma ./prisma/
 
+# Copy the production environment file
+COPY .env.production ./.env
+
 # Install app dependencies
 RUN npm install
 
 COPY . .
 
+RUN npm prisma migrate dev
 RUN npm run build
 
 FROM node:16
@@ -23,4 +27,5 @@ COPY --from=builder /app/package*.json ./
 COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
+
 CMD [ "npm", "run", "start:prod" ]
